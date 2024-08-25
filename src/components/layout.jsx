@@ -48,7 +48,7 @@ export default function Layout({ children }) {
           {state.view === "dashboard" ? (
             <>
               {/* Add the image before the buttons */}
-              <img src="dist/images/wallet.png" alt="Wallet" className="mb-4" />
+              <img src="/images/wallet.png" alt="Wallet" className="mb-4" />
 
               <button
                 className={`${styles.link} w-full text-left mb-2`}
@@ -68,7 +68,7 @@ export default function Layout({ children }) {
           ) : state.view !== "home" && state.view !== "dashboard" ? (
             <>
               {/* Add the image before the buttons */}
-              <img src="dist/images/wallet.png" alt="Wallet" className="mb-4" />
+              <img src="/images/wallet.png" alt="Wallet" className="mb-4" />
 
               <button
                 className={`${styles.link} w-full text-left mb-2`}
