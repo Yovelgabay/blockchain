@@ -8,6 +8,7 @@ import CoinAction from "./coinAction"
 import DashTitle from "./dashTitle"
 import Loading from "./loading"
 
+
 export default function Dashboard() {
     const { state, dispatch } = useContext(Context)    
     const [firstDivClass, setFirstDivClass] = useState('')
