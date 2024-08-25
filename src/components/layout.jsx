@@ -47,9 +47,14 @@ export default function Layout({ children }) {
         <div className="lg:w-1/4 bg-gray-200 p-6">
           {state.view === "dashboard" ? (
             <>
+              {/* Add the image before the buttons */}
+              <img src="dist/images/wallet.png" alt="Wallet" className="mb-4" />
+
               <button
                 className={`${styles.link} w-full text-left mb-2`}
-                onClick={() => dispatch({ type: "SET_VIEW", param: "walletDetails" })}
+                onClick={() =>
+                  dispatch({ type: "SET_VIEW", param: "walletDetails" })
+                }
               >
                 Wallet Details
               </button>
@@ -62,9 +67,14 @@ export default function Layout({ children }) {
             </>
           ) : state.view !== "home" && state.view !== "dashboard" ? (
             <>
+              {/* Add the image before the buttons */}
+              <img src="dist/images/wallet.png" alt="Wallet" className="mb-4" />
+
               <button
                 className={`${styles.link} w-full text-left mb-2`}
-                onClick={() => dispatch({ type: "SET_VIEW", param: "dashboard" })}
+                onClick={() =>
+                  dispatch({ type: "SET_VIEW", param: "dashboard" })
+                }
               >
                 Go to Wallet Home
               </button>
