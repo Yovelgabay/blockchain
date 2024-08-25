@@ -1,86 +1,61 @@
-import { useState, useEffect, useContext } from "preact/hooks";
-import { styles } from "../utils/styles";
+import { useState, useContext, useRef } from "preact/hooks";
 import Context from "../utils/context";
-import Error from "./error";
 import * as storage from "../utils/storage";
+import { styles } from "../utils/styles";
 
-export default function Layout({ children }) {
-  const { state, dispatch } = useContext(Context);
-  const [title, setTitle] = useState("Hello <br/> Welcome to HD Wallet!");
+export default function WalletDetails() {
+  const { state } = useContext(Context);
+  const [walletDetails, setWalletDetails] = useState(null);
+  const [error, setError] = useState("");
+  const passwordRef = useRef();
 
-  useEffect(() => {
-    const wallet = storage.getTempWallet();
-    if (wallet) {
-      dispatch({ type: "SET_VIEW", param: "dashboard" });
-      setTitle(
-        `<span class='text-gray-400'></span><span>${wallet.name}</span>`,
-      );
+  const handleUnlock = () => {
+    const password = passwordRef.current.value;
+    const decryptedWallet = storage.decryptObjectFromLocalStorage(
+      password,
+      state.wallet.name,
+    );
+
+    if (decryptedWallet) {
+      setWalletDetails(decryptedWallet);
+      setError("");
     } else {
-      dispatch({ type: "SET_VIEW", param: "home" });
+      setError("Incorrect password. Please try again.");
     }
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (state.error) {
-      const timer = setTimeout(() => {
-        dispatch({ type: "SET_ERROR", param: "" });
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [state.error, dispatch]);
+  };
 
   return (
-    <div className="w-full  max-w-4xl mx-auto my-10 border border-gray-300 rounded-lg shadow-md bg-white overflow-hidden">
-      <div
-        className={`${styles.layoutNav} bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 px-6 rounded-t-lg`}
-      >
-        <div
-          dangerouslySetInnerHTML={{
-            __html: state.wallet
-              ? `<span>Wallet:</span> <span>${title}</span>`
-              : title,
-          }}
-          className="text-xl font-semibold"
-        />
-      </div>
-      <div className="flex flex-col lg:flex-row min-h-screen">
-        <div className="lg:w-1/4 bg-gray-200 p-6">
-          {state.view === "dashboard" && (
-            <>
-              <button
-                className={`${styles.link} w-full text-left`}
-                onClick={() =>
-                  dispatch({ type: "SET_VIEW", param: "walletDetails" })
-                }
-              >
-                Wallet Details
-              </button>
-              <button
-                className={`${styles.link} w-full text-left`}
-                onClick={() => dispatch({ type: "EXIT" })}
-              >
-                Exit Wallet
-              </button>
-            </>
-          )}
-          {state.view !== "home" && state.view !== "dashboard" && (
-            <button
-              className={`${styles.link} w-full text-left`}
-              onClick={() => dispatch({ type: "SET_VIEW", param: "home" })}
-            >
-              Back Home
-            </button>
-          )}
+    <div>
+      <h2 className={styles.subTitle}>Wallet Details</h2>
+      {!walletDetails ? (
+        <div>
+          <div className={styles.label}>Enter your password</div>
+          <input
+            type="password"
+            ref={passwordRef}
+            className={styles.textInput}
+          />
+          <button onClick={handleUnlock} className={`${styles.button} my-4`}>
+            Unlock
+          </button>
+          {error && <p className="text-red-500">{error}</p>}
         </div>
-        <div className="flex-grow bg-white p-6 overflow-y-auto">
-          {children}
-          {state.error && (
-            <div className="relative mt-4">
-              <Error text={state.error} />
-            </div>
-          )}
+      ) : (
+        <div>
+          <p>
+            <strong>Mnemonic Phrase:</strong> {walletDetails.mnemonic}
+          </p>
+          <p>
+            <strong>Private Key (BTC):</strong>{" "}
+            {walletDetails.mainnet.BTC.privateKey}
+          </p>
+          <p>
+            <strong>Private Key (ETH):</strong>{" "}
+            {walletDetails.mainnet.ETH.privateKey}
+          </p>
+          {/* Add more details as needed */}
         </div>
-      </div>
+      )}
     </div>
   );
 }

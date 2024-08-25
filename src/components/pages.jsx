@@ -3,7 +3,7 @@ import Home from "./home";
 import Create from "./create";
 import Restore from "./restore";
 import Dashboard from "./dashboard";
-import WalletDetails from "./WalletDetails";
+import WalletDetails from "./walletDetails";
 
 export const pages = {
   home: <Home />,
@@ -11,5 +11,5 @@ export const pages = {
   create: <Create />,
   restore: <Restore />,
   dashboard: <Dashboard />,
-  walletDetails: <WalletDetails />, 
+  walletDetails: <WalletDetails />,
 };
