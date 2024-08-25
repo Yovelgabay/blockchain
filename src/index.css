@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color:antiquewhite;
+  }
+
+#popup{
+     color: red;
+     display: block;
+     padding-top: 10px;
+     padding-left: 20%;
+  }
