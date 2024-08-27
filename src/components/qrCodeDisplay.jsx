@@ -12,7 +12,7 @@ function QRCodeDisplay({ address }) {
             const item = new ClipboardItem({ 'image/png': blob })
             navigator.clipboard.write([item])
             .then(() => {
-                setCopy("QR code copied to clipboard")
+                setCopy("QR code copied to clipboard!")
                 setTimeout(() =>{
                     setCopy('')
                 }, 1500);

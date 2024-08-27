@@ -3,12 +3,17 @@
 @tailwind utilities;
 
 body {
-    background-color:antiquewhite;
-  }
+  background-color: antiquewhite;
+}
 
-#popup{
-     color: red;
-     display: block;
-     padding-top: 10px;
-     padding-left: 20%;
-  }
+#popup {
+  color: #ff7102;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+}
+
+* {
+  font-family: "Rubik", sans-serif !important;
+}

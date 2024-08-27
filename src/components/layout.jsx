@@ -45,11 +45,10 @@ export default function Layout({ children }) {
       </div>
       <div className="flex flex-col lg:flex-row min-h-screen">
         <div className="lg:w-1/4 bg-gray-200 p-6">
+          <img src="/images/wallet.png" alt="Wallet" className="mb-4" />
+
           {state.view === "dashboard" ? (
             <>
-              {/* Add the image before the buttons */}
-              <img src="/images/wallet.png" alt="Wallet" className="mb-4" />
-
               <button
                 className={`${styles.link} w-full text-left mb-2`}
                 onClick={() =>
@@ -67,9 +66,7 @@ export default function Layout({ children }) {
             </>
           ) : state.view !== "home" && state.view !== "dashboard" ? (
             <>
-              {/* Add the image before the buttons */}
-              <img src="/images/wallet.png" alt="Wallet" className="mb-4" />
-
+            
               <button
                 className={`${styles.link} w-full text-left mb-2`}
                 onClick={() =>

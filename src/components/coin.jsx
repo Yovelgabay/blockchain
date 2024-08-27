@@ -5,10 +5,7 @@ import { price, change, cost } from "../utils/utils";
 export default function Coin({ sym, val, cb }) {
   const { state, dispatch } = useContext(Context);
 
-  useEffect(() => {
-    // Optionally, refetch balances and tickers when needed
-    // fetchBalancesAndTickers();
-  }, [state.selectedCoin]);
+  useEffect(() => {}, [state.selectedCoin]);
 
   return (
     <>
@@ -56,16 +53,18 @@ export default function Coin({ sym, val, cb }) {
             <div class="pt-2">
               <button
                 title="send/receive"
-                className="p-0 m-0 text-white border-gray-300 border-0 rounded"
+                className="p-0 mr-1 text-white border-gray-300 border-0 rounded"
                 onClick={() => cb(sym)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                  class="h-5 w-5"
-                  fill="gray"
+                  width="27"
+                  height="27"
+                  fill="#ff7102"
+                  class="bi bi-arrow-right-square-fill"
+                  viewBox="0 0 16 16"
                 >
-                  <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" />
+                  <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1" />
                 </svg>
               </button>
             </div>
