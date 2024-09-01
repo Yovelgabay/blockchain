@@ -55,24 +55,20 @@ export const RestoreWallets = async (name, mnemonic) => {
   // default mainnet accounts
   const BTC = await CreateWallet("BTC", mnemonic);
   const ETH = await CreateWallet("ETH", mnemonic);
-  const ADA = await CreateWallet("ADA", mnemonic);
   // default testnet accounts
   const wBTC = CreateWalletTest("wBTC", BTC.address, BTC.privateKey);
   const sETH = CreateWalletTest("sETH", ETH.address, ETH.privateKey);
-  const wADA = CreateWalletTest("wADA", ADA.address, ADA.privateKey);
 
   return {
     mnemonic,
     name: name,
     mainnet: {
-      BTC: BTC,
       ETH: ETH,
-      ADA: ADA,
+      BTC: BTC,
     },
     testnet: {
-      wBTC: wBTC,
       sETH: sETH,
-      wADA: wADA,
+      wBTC: wBTC,
     },
   };
 };

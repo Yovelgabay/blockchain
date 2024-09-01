@@ -10,12 +10,12 @@ export default function Coin({ sym, val, cb }) {
   return (
     <>
       <div
-        class="grid grid-cols-2 gap-1 text-gray-400 text-xs border-b-2 border-gray-200 pt-2 pb-2 mb-0 mt-0 pl-2 hover:bg-gray-200 cursor-pointer"
+        class="grid grid-cols-2 gap-1 text-gray-400 text-xs border-b-2 border-gray-200 pt-2 pb-2 mb-0 mt-0 pl-5 pr-5 hover:bg-gray-200 cursor-pointer"
         onClick={() => cb(sym)}
       >
-        <div class="flex justify-start gap-3">
+        <div class="flex justify-start gap-2">
           <div>
-            <img src={val.coinInfo.image} class="w-9 h-9" />
+            <img src={val.coinInfo.image} class="w-14 h-14" />
           </div>
           <div>
             <div class="flex justify-start gap-1 text-sm">

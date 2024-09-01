@@ -28,9 +28,8 @@ export const change = (state, sym) => {
 
 export const cost = (state, sym) => {
   const keyMapping = {
-    wBTC: "bitcoin",
     sETH: "ethereum",
-    wADA: "cardano",
+    wBTC: "bitcoin",
   };
   const tickerKey = keyMapping[sym] || sym;
   const balance = parseFloat(state.balances[sym]) || 0;
@@ -62,7 +61,6 @@ export const getBalances = async (wallet, dispatch, network) => {
     const keyMapping = {
       wBTC: "bitcoin",
       sETH: "ethereum",
-      wADA: "cardano",
     };
 
     // Step 3: Calculate the total balance in USD

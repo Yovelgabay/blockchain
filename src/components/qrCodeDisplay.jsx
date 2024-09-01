@@ -37,7 +37,7 @@ function QRCodeDisplay({ address }) {
         <>
             <div class="flex justify-center">
                 <div class="inline-block border-4 border-transparent hover:border-gray-300 p-2 m-4 cursor-pointer">
-                    <canvas ref={qrCodeRef} style={{ width: '200px', height: 'auto', padding: '0px', margin: '0px' }}
+                    <canvas ref={qrCodeRef} style={{ width: '100px', height: 'auto', padding: '0px', margin: '0px' }}
                         onClick={(e) => copyQRCodeToClipboard(e)} title="click to copy"/>
                 </div>
             </div>
